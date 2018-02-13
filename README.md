@@ -18,7 +18,7 @@ Solution 1                 |  Solution 2
 ## Functions
 + `predictions()` - lets you see what **results** the NN currently would give for XOR problem
 + `training(iters=10000)` - **trains** the net with some fixed _learning rate_ and _number of iterations_
-+ `progressive(iters=10000)` - the best type of training for this example. Shows how the net learns over time using progressive change of the learning rate
++ `progressive(iters=10000)` - **the best** type of **training** for this example. Shows how the net learns _over time_ using progressive change of the learning rate
 
 Only in _plotxor.jl_
 
