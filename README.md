@@ -1,7 +1,7 @@
 # Neural Network in Julia
 
 # XOR problem
-Solution 1                     |  Solution 2
+Neural Network Solution #1     |  Neural Network Solution #2
 :-----------------------------:|:-------------------------------:
 ![solution1](XOR/gif/xor1.gif) |  ![solution2](XOR/gif/xor2.gif)
 ## How to
