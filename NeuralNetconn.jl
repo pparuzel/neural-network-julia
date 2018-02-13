@@ -28,7 +28,7 @@ end
 
 #= Neural Layer =#
 
-type Layer
+mutable struct Layer
     # weights and biases
     synapses::Array{Float64}
     bias::Array{Float64}
@@ -50,7 +50,7 @@ end
 
 #= Neural Network =#
 
-type NeuralNetwork
+mutable struct NeuralNetwork
     layers::Array{Layer}
     learning_rate::Float64
 
