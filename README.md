@@ -1,9 +1,9 @@
 # Neural Network in Julia
 
 # XOR problem
-Solution 1                 |  Solution 2
-:-------------------------:|:-------------------------:
-![](XOR/gif/xor1.gif)  |  ![](XOR/gif/xor2.gif)
+Solution 1                     |  Solution 2
+:-----------------------------:|:-------------------------------:
+![solution1](XOR/gif/xor1.gif) |  ![solution2](XOR/gif/xor2.gif)
 ## How to
 1. Get into _XOR_ folder and launch julia.  
 2. Open up Julia **REPL** to avoid recompilations again and again.
@@ -24,3 +24,7 @@ Only in _plotxor.jl_
 
 + `plotxor()` - **generate** NN prediction plot
 + `gifxor()` - **generate** hundred .png images with prediction plot and store them inside **gif** folder
+
+**Another solution example**
+
+![xor_lines](XOR/gif/xor3.gif)
