@@ -34,7 +34,7 @@ Only in _plotxor.jl_
 ## How to
 1. Get into _MNIST_ folder and launch julia.
 2. Open up Julia **REPL** to avoid recompilations again and again.
-3. **Launch** the mnist visualization program by typing `include("numbers.jl")` (or `include("nn.jl")` without visualization)
+3. **Launch** the mnist visualization program by typing `include("numbers.jl")`
 
    3.1 You may need to _"install"_ the NeuralNetconn package first
 
@@ -49,7 +49,7 @@ Only in _plotxor.jl_
 + `check()` - show Neural Network **accuarcy** for _60,000 MNIST images_
 + `main()` - launch MNIST + NN **visualization**
 
-## Caveat
+## Troubleshooting
 If SFML window was _closed_ and you still want to _reopen_ it (without reincluding the file) - this is **necessary** to type in:  
 ```
    window = RenderWindow(VideoMode(800, 600), "Numbers")
