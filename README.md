@@ -28,3 +28,32 @@ Only in _plotxor.jl_
 **Another solution example**
 
 ![xor_lines](XOR/gif/xor3.gif)
+
+# MNIST - handwritten digits recognition
+![mnist](MNIST/gif/mnist.gif)
+## How to
+1. Get into _MNIST_ folder and launch julia.
+2. Open up Julia **REPL** to avoid recompilations again and again.
+3. **Launch** the mnist visualization program by typing `include("numbers.jl")` (or `include("nn.jl")` without visualization)
+
+   3.1 You may need to _"install"_ the NeuralNetconn package first
+
+   3.2 To do that put **NeuralNetconn.jl** to `/Users/{USER_NAME}/.julia/{VERSION}/NeuralNetconn/src`
+   
+4. Call `main()` function
+5. Wait until 3 trainings are complete (this usually gets to 92% prediction accuracy)
+6. Try out functions!
+
+## Functions
++ `training(iters=3)` - **train more** for better accuracy. Though you can only achieve ~92% with this NN.
++ `check()` - show Neural Network **accuarcy** for _60,000 MNIST images_
++ `main()` - launch MNIST + NN **visualization**
+
+## Caveat
+If SFML window was _closed_ and you still want to _reopen_ it (without reincluding the file) - this is **necessary** to type in:  
+```
+   window = RenderWindow(VideoMode(800, 600), "Numbers")
+   set_framerate_limit(window, 60)
+   main()
+```
+...because the window has to be reconstructed after being closed.  
