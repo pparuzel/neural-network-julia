@@ -2,7 +2,7 @@
 
 module NeuralNetconn
 
-export NeuralNetwork, predict, train, prepare
+export NeuralNetwork, predict, train, prepare, backup
 
 #= Activation functions =#
 
@@ -61,6 +61,10 @@ mutable struct NeuralNetwork
         end
         push!(l, Layer(nhidden[end], noutput, isoutputlayer=true))
         return new(l, η)
+    end
+
+    function NeuralNetwork(dumpdata)
+        return new(dumpdata["layers"], dumpdata["lr"])
     end
 end
 
@@ -142,6 +146,10 @@ function predict(data::Array, nn::NeuralNetwork)
     # propagate forward
     result = feedforward(data, nn)
     return Dict("result" => result)
+end
+
+function backup(nn)
+    return Dict("layers" => nn.layers, "lr" => nn.learning_rate)
 end
 
 end
