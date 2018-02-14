@@ -1,5 +1,5 @@
 using NeuralNetconn
-include("mnist.jl")
+include("mnist_loader.jl")
 
 data = mnist()
 
@@ -37,7 +37,7 @@ function check()
         if i % 500 == 0
             print(STDERR, "\rChecking: $(div(i, 600))%")
         end
-        if UInt8(indmax(predict(prepare(flatdata[:, 1, i]'), prepare(wideans[i, :]'), nn)["result"])) == data[2][i]
+        if UInt8(indmax(predict(prepare(flatdata[:, 1, i]'), nn)["result"])) == data[2][i]
             checks["HIT"] += 1
         else
             checks["MISS"] += 1
