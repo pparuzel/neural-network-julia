@@ -6,22 +6,22 @@ export NeuralNetwork, predict, train, prepare
 
 #= Activation functions =#
 
-sigmoid(x::Float64) = 1. / (1 + exp(-x))
+sigmoid(x) = 1. / (1 + exp(-x))
 
-function ∇sigmoid(x::Float64)
+function ∇sigmoid(x)
     x = sigmoid(x)
     return x * (1 - x)
 end
 
-LeakyReLU(x::Float64) = max(x, 0.01x)
+LeakyReLU(x) = max(x, 0.01x)
 
-∇LeakyReLU(x::Float64) = x > 0 ? 1 : 0.01
+∇LeakyReLU(x) = x > 0 ? 1 : 0.01
 
-ELU(x::Float64) = max(x, 0.1 * (exp(x) - 1))
+ELU(x) = max(x, 0.1 * (exp(x) - 1))
 
-∇ELU(x::Float64) = max(1, 0.1 * (exp(x)))
+∇ELU(x) = max(1, 0.1 * (exp(x)))
 
-function ∇tanh(x::Float64)
+function ∇tanh(x)
     x = tanh(x)
     return 1 - x * x
 end
@@ -30,15 +30,15 @@ end
 
 mutable struct Layer
     # weights and biases
-    synapses::Array{Float64}
-    bias::Array{Float64}
+    synapses::Array
+    bias::Array
     # activations
     out::Function
     ∇out::Function
     # saved values
-    input::Array{Float64}
-    net::Array{Float64}
-    output::Array{Float64}
+    input::Array
+    net::Array
+    output::Array
 
     function Layer(ninput::Int, noutput::Int; isoutputlayer=false)
         synapses = randn(ninput, noutput)
@@ -69,7 +69,7 @@ end
 # input, linear regression output
 # and post-activation output
 
-function feedforward(data::Array{Float64}, nn::NeuralNetwork)
+function feedforward(data::Array, nn::NeuralNetwork)
     for layer in nn.layers
         layer.input = data
         data = data * layer.synapses .+ layer.bias
@@ -80,11 +80,11 @@ function feedforward(data::Array{Float64}, nn::NeuralNetwork)
     return data
 end
 
-err(prediction::Float64, target::Float64) = 0.5 * (target - prediction) ^ 2
+err(prediction, target) = 0.5 * (target - prediction) ^ 2
 
-∇err(prediction::Float64, target::Float64) = prediction - target
+∇err(prediction, target) = prediction - target
 
-function backpropagate(output::Array{Float64}, nn::NeuralNetwork)
+function backpropagate(output::Array, nn::NeuralNetwork)
     η = nn.learning_rate
     # output layer
     layer = nn.layers[end]
@@ -116,7 +116,7 @@ function prepare(data)::Array{Float64, 2}
     return data
 end
 
-function predict(data::Array{Float64}, output::Array{Float64}, nn::NeuralNetwork)
+function predict(data::Array, output::Array, nn::NeuralNetwork)
     # propagate forward
     result = feedforward(data, nn)
     # calculate cost vector
@@ -126,7 +126,7 @@ function predict(data::Array{Float64}, output::Array{Float64}, nn::NeuralNetwork
     return Dict("result" => result, "cost" => cost)
 end
 
-function train(data::Array{Float64}, output::Array{Float64}, nn::NeuralNetwork)
+function train(data::Array, output::Array, nn::NeuralNetwork)
     # propagate forward
     result = feedforward(data, nn)
     # calculate cost vector
@@ -138,10 +138,12 @@ function train(data::Array{Float64}, output::Array{Float64}, nn::NeuralNetwork)
     return Dict("result" => result, "cost" => cost)
 end
 
-function predict(data::Array{Float64}, nn::NeuralNetwork)
+function predict(data::Array, nn::NeuralNetwork)
     # propagate forward
     result = feedforward(data, nn)
-    return result
+    return Dict("result" => result)
 end
 
 end
+
+nothing
