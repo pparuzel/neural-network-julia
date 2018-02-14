@@ -35,7 +35,7 @@ function check()
     checks = Dict("HIT" => 0, "MISS" => 0)
     for i in 1:60000
         if i % 500 == 0
-            print(STDERR, "\r Checking: $(div(i, 600))%")
+            print(STDERR, "\rChecking: $(div(i, 600))%")
         end
         if UInt8(indmax(predict(prepare(flatdata[:, 1, i]'), prepare(wideans[i, :]'), nn)["result"])) == data[2][i]
             checks["HIT"] += 1
@@ -43,7 +43,7 @@ function check()
             checks["MISS"] += 1
         end
     end
-    println()
+    println("\nAccuracy: $(checks["HIT"] / 600)%")
     return checks
 end
 
