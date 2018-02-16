@@ -9,9 +9,10 @@ Neural Network Solution #1     |  Neural Network Solution #2
 2. Open up Julia **REPL** to avoid recompilations again and again.
 3. **Launch** the xor file by typing `include("xor.jl")`
 
-   3.1 You may need to _"install"_ the NeuralNetconn package first
-
-   3.2 To do that put **NeuralNetconn.jl** to `/Users/{USER_NAME}/.julia/{VERSION}/NeuralNetconn/src`
+   3.1 To import NeuralNetwork Library - include("../NeuralNetconn.jl") first
+   
+   3.2 **OR** _install_ the NeuralNetconn package first  
+       To do that put **NeuralNetconn.jl** to `/Users/{USER_NAME}/.julia/{VERSION}/NeuralNetconn/src`
    
 4. Try out functions!
 
@@ -36,9 +37,10 @@ Only in _plotxor.jl_
 2. Open up Julia **REPL** to avoid recompilations again and again.
 3. **Launch** the mnist visualization program by typing `include("numbers.jl")`
 
-   3.1 You may need to _"install"_ the NeuralNetconn package first
-
-   3.2 To do that put **NeuralNetconn.jl** to `/Users/{USER_NAME}/.julia/{VERSION}/NeuralNetconn/src`
+   3.1 To import NeuralNetwork Library - include("../NeuralNetconn.jl") first
+   
+   3.2 **OR** _install_ the NeuralNetconn package first  
+       To do that put **NeuralNetconn.jl** to `/Users/{USER_NAME}/.julia/{VERSION}/NeuralNetconn/src`
    
 4. Call `main()` function
 5. Wait until 3 trainings are complete (this usually gets to 92% prediction accuracy)
